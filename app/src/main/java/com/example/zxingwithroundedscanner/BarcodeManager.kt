@@ -16,13 +16,16 @@ import com.journeyapps.barcodescanner.*
 
 class BarcodeManager(
     private val fragment: Fragment,
-    private val barcodeView: DecoratedBarcodeView
+    private val barcodeView: DecoratedBarcodeView,
+    private val onCameraPermissionDenied: (() -> Unit)? = null
 ) : DefaultLifecycleObserver {
 
     private val activity: Activity
         get() = fragment.requireActivity()
 
     private lateinit var beepManager: BeepManager
+
+    private var isGotoSetting = false
 
     private val callback: BarcodeCallback = object : BarcodeCallback {
         override fun barcodeResult(result: BarcodeResult) {
@@ -37,27 +40,19 @@ class BarcodeManager(
         initViews()
     }
 
-    private var askedPermission = false
-    private fun openCameraWithPermission() {
-        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA)
-            == PackageManager.PERMISSION_GRANTED
-        ) {
-            barcodeView.resume()
-        } else if (!askedPermission) {
-            ActivityCompat.requestPermissions(
-                activity,
-                arrayOf(Manifest.permission.CAMERA),
-                cameraPermissionReqCode
-            )
-            askedPermission = true
-        } // else wait for permission result
-    }
+    private val cameraPermissionObserver = SinglePermissionObserver(
+        fragment,
+        Manifest.permission.CAMERA,
+        onDenied = { onCameraPermissionDenied?.invoke() },
+        onPermanentlyDenied = {
+        }
+    )
 
     private fun initViews() {
         fragment.lifecycle.addObserver(this)
         activity.window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-//        barcodeView.decoderFactory =
-//            DefaultDecoderFactory(ArrayList<BarcodeFormat>().apply { add(BarcodeFormat.QR_CODE) })
+        barcodeView.decoderFactory =
+            DefaultDecoderFactory(ArrayList<BarcodeFormat>().apply { add(BarcodeFormat.QR_CODE) })
         beepManager = BeepManager(activity)
     }
 
@@ -65,9 +60,21 @@ class BarcodeManager(
         barcodeView.decodeSingle(callback)
     }
 
+    fun onViewCreated() {
+        if (!fragment.requireContext().hasCameraPermission()) {
+            cameraPermissionObserver.requestPermission()
+        }
+    }
+
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
-        openCameraWithPermission()
+        if (fragment.requireContext().hasCameraPermission()) {
+            barcodeView.resume()
+        }
+        if (isGotoSetting && !fragment.requireContext().hasCameraPermission()) {
+            onCameraPermissionDenied?.invoke()
+        }
+        isGotoSetting = false
     }
 
     override fun onPause(owner: LifecycleOwner) {
@@ -80,12 +87,11 @@ class BarcodeManager(
         super.onDestroy(owner)
     }
 
-    private fun onDestroy() {
+    fun onDestroy() {
         fragment.requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
     companion object {
-        private const val cameraPermissionReqCode = 250
         private val TAG = BarcodeManager::class.java.simpleName
     }
 }

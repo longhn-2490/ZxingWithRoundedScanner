@@ -8,6 +8,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().add(R.id.rootView, ScanFragment()).addToBackStack(null).commit()
+        supportFragmentManager.beginTransaction().add(R.id.rootView, ScanFragment()).commit()
+    }
+
+    fun goToWebView(url: String) {
+        supportFragmentManager.beginTransaction().add(R.id.rootView, WebViewFragment.newInstance(url)).commit()
     }
 }
