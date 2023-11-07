@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.example.zxingwithroundedscanner.CodeItem" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_15"
+        app:cardPreventCornerOverlap="true"
+        app:cardCornerRadius="@dimen/dp_6"
+        app:cardBackgroundColor="#3A3838"
+        android:layout_marginBottom="@dimen/dp_10"
+        app:cardElevation="@dimen/dp_6">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:paddingVertical="@dimen/dp_10"
+            android:paddingHorizontal="@dimen/dp_15"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtCode"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:text="google.comgoogle.comgoogle.comgoogle.com"
+                android:textSize="@dimen/dp_20"
+                android:textColor="#DCD9D9"
+                android:autoLink="web"
+                android:layout_marginEnd="@dimen/dp_40"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#A7ABB1"
+                android:text="20/20/2000"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/dp_5"
+                app:layout_constraintTop_toBottomOf="@id/txtCode" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/imgDelete"
+                android:layout_width="@dimen/dp_25"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="@dimen/dp_25"
+                android:background="@drawable/ic_close" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

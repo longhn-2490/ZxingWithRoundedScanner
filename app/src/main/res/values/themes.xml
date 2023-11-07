@@ -13,4 +13,30 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="PrimaryTextView.AppAlert.Message" parent="Theme.ZxingWithRoundedScanner">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">@dimen/dp_2</item>
+        <item name="android:paddingLeft">@dimen/dp_14</item>
+        <item name="android:paddingRight">@dimen/dp_14</item>
+        <item name="android:shadowColor">@color/black_10</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/dp_16</item>
+    </style>
+
+    <style name="PrimaryTextView.AppAlert.Title" parent="PrimaryTextView.AppAlert.Message">
+        <item name="android:textSize">@dimen/dp_18</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DialogAnimation" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit_anim</item>
+    </style>
 </resources>
