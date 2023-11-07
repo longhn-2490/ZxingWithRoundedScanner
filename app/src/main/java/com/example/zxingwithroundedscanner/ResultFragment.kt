@@ -9,7 +9,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,6 +64,22 @@ class ResultFragment : Fragment() {
         binding.imgShare.setOnClickListener {
             startShareLink(result)
         }
+
+        binding.txtCopy.setOnClickListener {
+            val clipboard =
+                context?.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+            val clipData = ClipData.newPlainText("code", result)
+            clipboard?.setPrimaryClip(clipData)
+            Toast.makeText(context, "Copied to clipboard", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.txtBrowser.setOnClickListener {
+            activity?.launchBrowser(result)
+        }
+
+        binding.txtShare.setOnClickListener {
+            startShareLink(result)
+        }
     }
 
     override fun onDestroy() {
@@ -108,7 +123,12 @@ class ResultFragment : Fragment() {
         }
     }
 
-    fun Activity.createShareIntent(intentType: String, imageUri: Uri, content: String, title: String): Intent {
+    fun Activity.createShareIntent(
+        intentType: String,
+        imageUri: Uri,
+        content: String,
+        title: String
+    ): Intent {
         return Intent().apply {
             action = Intent.ACTION_SEND
             type = intentType
@@ -133,7 +153,8 @@ class ResultFragment : Fragment() {
         var cachePath: File? = null
         return try {
             val filename = PRE_FILE_NAME + System.currentTimeMillis() + PNG_EXTENSION
-            val bm: Bitmap? = ResourcesCompat.getDrawable(context.resources, drawable, null)?.toBitmap()
+            val bm: Bitmap? =
+                ResourcesCompat.getDrawable(context.resources, drawable, null)?.toBitmap()
             cachePath = File(context.cacheDir, CACHE)
             cachePath.mkdirs()
             stream = FileOutputStream("$cachePath/$filename")

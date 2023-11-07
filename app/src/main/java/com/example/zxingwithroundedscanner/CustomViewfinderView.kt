@@ -14,10 +14,10 @@ class CustomViewfinderView(context: Context, attrs: AttributeSet?) :
     }
 
     private val curveRadius: Float =
-        context.resources.getDimensionPixelOffset(R.dimen.dp_40).toFloat()
+        context.resources.getDimensionPixelOffset(R.dimen.dp_20).toFloat()
 
     private val cornerLength: Float =
-        context.resources.getDimensionPixelOffset(R.dimen.dp_15).toFloat()
+        context.resources.getDimensionPixelOffset(R.dimen.dp_10).toFloat()
 
     private val curveMargin: Float =
         context.resources.getDimensionPixelOffset(R.dimen.dp_2).toFloat()

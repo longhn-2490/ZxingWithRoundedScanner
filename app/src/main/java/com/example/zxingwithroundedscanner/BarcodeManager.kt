@@ -51,8 +51,8 @@ class BarcodeManager(
     private fun initViews() {
         fragment.lifecycle.addObserver(this)
         activity.window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        barcodeView.decoderFactory =
-            DefaultDecoderFactory(ArrayList<BarcodeFormat>().apply { add(BarcodeFormat.QR_CODE) })
+//        barcodeView.decoderFactory =
+//            DefaultDecoderFactory(ArrayList<BarcodeFormat>().apply { add(BarcodeFormat.QR_CODE) })
         beepManager = BeepManager(activity)
     }
 

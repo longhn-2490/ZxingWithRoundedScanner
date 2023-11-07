@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_80"
+        android:paddingTop="@dimen/dp_60"
+        tools:context=".ScanFragment">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imgDeleteAll"
+            android:layout_width="@dimen/dp_50"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/dp_15"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="@dimen/dp_50"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerHistory"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/imgDeleteAll"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/code_item"
+            android:layout_marginTop="@dimen/dp_25"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
