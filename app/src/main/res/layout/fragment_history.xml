@@ -11,11 +11,12 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/imgDeleteAll"
-            android:layout_width="@dimen/dp_50"
+            android:layout_width="@dimen/dp_40"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="@dimen/dp_15"
+            android:background="@drawable/ic_delete"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_height="@dimen/dp_50"/>
+            android:layout_height="@dimen/dp_40"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerHistory"
@@ -24,6 +25,8 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/code_item"
+            android:paddingBottom="@dimen/dp_100"
+            android:clipToPadding="false"
             android:layout_marginTop="@dimen/dp_25"
             android:layout_height="wrap_content">
         </androidx.recyclerview.widget.RecyclerView>

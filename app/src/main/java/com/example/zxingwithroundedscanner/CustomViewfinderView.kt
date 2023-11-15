@@ -14,13 +14,13 @@ class CustomViewfinderView(context: Context, attrs: AttributeSet?) :
     }
 
     private val curveRadius: Float =
-        context.resources.getDimensionPixelOffset(R.dimen.dp_20).toFloat()
+        context.resources.getDimensionPixelOffset(R.dimen.dp_0).toFloat()
 
     private val cornerLength: Float =
-        context.resources.getDimensionPixelOffset(R.dimen.dp_10).toFloat()
+        context.resources.getDimensionPixelOffset(R.dimen.dp_25).toFloat()
 
     private val curveMargin: Float =
-        context.resources.getDimensionPixelOffset(R.dimen.dp_2).toFloat()
+        context.resources.getDimensionPixelOffset(R.dimen.dp_0).toFloat()
 
     private val curveStrokeWidth =
         context.resources.getDimensionPixelOffset(R.dimen.dp_4).toFloat()
@@ -147,7 +147,7 @@ class CustomViewfinderView(context: Context, attrs: AttributeSet?) :
         )
         path.moveTo(left + (cornerRadius / 2f), top)
         path.lineTo(left + (cornerRadius / 2f) + cornerLength, top)
-        path.moveTo(left, top + (cornerRadius / 2f))
+        path.moveTo(left, top - curveStrokeWidth/2 + (cornerRadius / 2f))
         path.lineTo(left, top + (cornerRadius / 2f) + cornerLength)
         // top right
         path.moveTo(right - cornerRadius, top)
@@ -159,7 +159,7 @@ class CustomViewfinderView(context: Context, attrs: AttributeSet?) :
         )
         path.moveTo(right - (cornerRadius / 2f), top)
         path.lineTo(right - (cornerRadius / 2f) - cornerLength, top)
-        path.moveTo(right, top + (cornerRadius / 2f))
+        path.moveTo(right, top - curveStrokeWidth/2+ (cornerRadius / 2f))
         path.lineTo(right, top + (cornerRadius / 2f) + cornerLength)
         // bottom left
         path.moveTo(left, bottom - cornerRadius)
@@ -171,7 +171,7 @@ class CustomViewfinderView(context: Context, attrs: AttributeSet?) :
         )
         path.moveTo(left + (cornerRadius / 2f), bottom)
         path.lineTo(left + (cornerRadius / 2f) + cornerLength, bottom)
-        path.moveTo(left, bottom - (cornerRadius / 2f))
+        path.moveTo(left, bottom + curveStrokeWidth/2 - (cornerRadius / 2f))
         path.lineTo(left, bottom - (cornerRadius / 2f) - cornerLength)
         // bottom right
         path.moveTo(left, bottom - cornerRadius)
@@ -183,7 +183,7 @@ class CustomViewfinderView(context: Context, attrs: AttributeSet?) :
         )
         path.moveTo(right - (cornerRadius / 2f), bottom)
         path.lineTo(right - (cornerRadius / 2f) - cornerLength, bottom)
-        path.moveTo(right, bottom - (cornerRadius / 2f))
+        path.moveTo(right, bottom + curveStrokeWidth/2 - (cornerRadius / 2f))
         path.lineTo(right, bottom - (cornerRadius / 2f) - cornerLength)
         return path
     }

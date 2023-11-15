@@ -172,7 +172,7 @@ class AppAlert(fragmentActivity: FragmentActivity) : Dialog(fragmentActivity) {
         private fun setupPositiveButton(): TextView {
             return TextView(context).apply {
                 text = positiveButtonText
-                setTextColor(ContextCompat.getColor(context, R.color.dark_dodger_blue))
+                setTextColor(ContextCompat.getColor(context, R.color.red_orange))
                 gravity = Gravity.CENTER
                 layoutParams = getButtonLayoutParams()
                 setOnClickListener {

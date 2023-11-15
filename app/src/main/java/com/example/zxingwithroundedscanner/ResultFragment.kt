@@ -179,8 +179,7 @@ class ResultFragment : Fragment() {
     companion object {
         private const val JPG_EXTENSION = ".jpg"
         private const val PNG_EXTENSION = ".png"
-        private const val PRE_FILE_NAME = "Hizakurige"
-        private const val APP_IMAGE_FOLDER = "/Hizakurige/"
+        private const val PRE_FILE_NAME = "qrcode"
         private const val CACHE = "cache"
         const val IMAGE_TYPE = "image/*"
         const val APP_FILE_PROVIDER = BuildConfig.APPLICATION_ID.plus(".provider")

@@ -85,10 +85,10 @@ class ScanFragment : Fragment(), SelectPhotoHelper.OnSelectPhotoListener, OnFrag
 
     private fun gotoResultFragment(result: String) {
         parentFragmentManager.beginTransaction()
+            .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right)
             .add(R.id.rootView, ResultFragment.newInstance(result))
             .addToBackStack(null)
             .commit()
-        (activity as MainActivity)
     }
 
     fun enableCameraDecoding() {

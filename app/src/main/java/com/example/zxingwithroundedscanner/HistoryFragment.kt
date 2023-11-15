@@ -46,7 +46,7 @@ class HistoryFragment : Fragment() {
     private fun handleEvents() {
         binding.imgDeleteAll.setOnClickListener {
             if (historyItems.isEmpty()) return@setOnClickListener
-            (activity as? MainActivity)?.showAlert("Xóa tất cả", negativeButtonText = R.string.no, onPositiveButtonClick = {
+            (activity as? MainActivity)?.showAlert("Xóa tất cả", negativeButtonText = R.string.no, positiveButtonText = R.string.ok, onPositiveButtonClick = {
                 adapter.submitList(null)
                 historyItems.clear()
                 sharedPrefApi[CODE] = emptyList<CodeItem>()
@@ -56,6 +56,7 @@ class HistoryFragment : Fragment() {
 
     private fun setupRecyclerView() {
         binding.recyclerHistory.adapter = adapter
+        binding.recyclerHistory.isNestedScrollingEnabled = false
     }
 
     private fun loadHistories() {

@@ -32,18 +32,6 @@ class MainActivity : AppCompatActivity() {
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         viewPager.adapter = adapter
         viewPager.offscreenPageLimit = 2
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                if (position == 0) {
-                    (adapter.fragments[position] as? ScanFragment)?.enableCameraDecoding()
-                } else {
-                    (adapter.fragments[position] as? ScanFragment)?.let {
-                        it.stopDecoding()
-                    }
-                }
-            }
-        })
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> "Scan"

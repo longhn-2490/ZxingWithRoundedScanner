@@ -79,7 +79,8 @@
             android:layout_height="@dimen/dp_30"
             android:layout_marginStart="@dimen/dp_15"
             android:layout_marginTop="@dimen/dp_20"
-            android:background="@color/white"
+            android:background="@drawable/earth"
+            android:backgroundTint="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtOption" />
 
@@ -89,7 +90,7 @@
             android:layout_height="@dimen/dp_30"
             android:layout_marginStart="@dimen/dp_15"
             android:layout_marginTop="@dimen/dp_20"
-            android:background="@color/white"
+            android:background="@drawable/copy"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgBrowser" />
 
@@ -99,7 +100,7 @@
             android:layout_height="@dimen/dp_30"
             android:layout_marginStart="@dimen/dp_15"
             android:layout_marginTop="@dimen/dp_20"
-            android:background="@color/white"
+            android:background="@drawable/share"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtCopy" />
 
