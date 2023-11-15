@@ -147,8 +147,8 @@ class SelectPhotoHelper(private val fragment: Fragment) :
 
         private const val JPG_EXTENSION = ".jpg"
         private const val PNG_EXTENSION = ".png"
-        private const val PRE_FILE_NAME = "Hizakurige"
-        private const val APP_IMAGE_FOLDER = "/Hizakurige/"
+        private const val PRE_FILE_NAME = "QRCode"
+        private const val APP_IMAGE_FOLDER = "/QRCode/"
         private const val CACHE = "cache"
         const val IMAGE_TYPE = "image/*"
     }
